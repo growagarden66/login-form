@@ -1,6 +1,5 @@
 // LOGIN
 const loginBtn = document.getElementById('loginBtn');
-
 if (loginBtn) {
   loginBtn.addEventListener('click', () => {
     const user = document.getElementById('username').value.trim();
@@ -15,12 +14,10 @@ if (loginBtn) {
     const savedPass = localStorage.getItem('growaPass');
 
     if (!savedUser && !savedPass) {
-      // cria conta nova
       localStorage.setItem('growaUser', user);
       localStorage.setItem('growaPass', pass);
       window.location.href = 'home.html';
     } else if (user === savedUser && pass === savedPass) {
-      // login correto
       window.location.href = 'home.html';
     } else {
       alert('Usuário ou senha incorretos!');
