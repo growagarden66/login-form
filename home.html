@@ -6,7 +6,13 @@
   <title>Growa - Início</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="fade-in">
+  <canvas id="stars"></canvas>
+
+  <audio id="ambientSound" autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/09/audio_9b3b34e2b5.mp3?filename=windy-ambience-ambient-sound-21103.mp3" type="audio/mp3" />
+  </audio>
+
   <div class="home-container">
     <h1 class="logo">Growa</h1>
     <div class="search-box">
@@ -20,6 +26,7 @@
     </div>
   </div>
 
+  <script src="stars.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
