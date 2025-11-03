@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1e1e1e;
+  color: #fff;
+}
+
+.login-container {
+  text-align: center;
+}
+
+.login-box {
+  background: #2a2a2a;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 300px;
+  position: relative;
+}
+
+.icon {
+  background: #1f1f1f;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  margin: 0 auto;
+}
+
+.msg {
+  color: #ff4b4b;
+  font-size: 0.8rem;
+  margin: 10px 0;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 5px;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.btn-container {
+  position: relative;
+  height: 50px;
+}
+
+#login-btn {
+  position: absolute;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 25px;
+  background: #316aff;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Classes de animação */
+.shift-left { left: -100px; }
+.shift-right { left: 100px; }
+.shift-top { top: -40px; }
+.shift-bottom { top: 40px; }
