@@ -1,55 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Legend Search</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="ghost.js" defer></script>
-  <style>
-    body {
-      background: #121212;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-family: 'Poppins', sans-serif;
-    }
-    .search-box {
-      display: flex;
-      align-items: center;
-      background: #1e1e1e;
-      padding: 10px 15px;
-      border-radius: 50px;
-      width: 90%;
-      max-width: 500px;
-    }
-    .search-box input {
-      width: 100%;
-      padding: 10px;
-      border: none;
-      outline: none;
-      background: transparent;
-      color: white;
-      font-size: 1rem;
-    }
-    .search-box button {
-      background: #316aff;
-      border: none;
-      border-radius: 25px;
-      color: white;
-      padding: 10px 20px;
-      cursor: pointer;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Growa - Início</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Legend Search</h1>
-  <div class="search-box">
-    <input type="text" placeholder="Pesquisar no Legend...">
-    <button>Buscar</button>
+  <div class="home-container">
+    <h1 class="logo">Growa</h1>
+    <div class="search-box">
+      <input type="text" placeholder="Pesquisar..." />
+    </div>
+
+    <div class="logout-container">
+      <button id="logoutButton" class="logout-btn">
+        <span>Log Out</span> 🚪
+      </button>
+    </div>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
