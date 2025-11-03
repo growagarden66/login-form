@@ -1,4 +1,3 @@
-/* ===== ESTILO GERAL ===== */
 * {
   margin: 0;
   padding: 0;
@@ -7,15 +6,37 @@
 }
 
 body {
-  background: #0a0a0a;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   overflow: hidden;
+  background: #000;
 }
 
+/* FADE-IN (efeito de entrada suave) */
+.fade-in {
+  animation: fadeIn 1.5s ease-in-out forwards;
+  opacity: 0;
+}
+@keyframes fadeIn {
+  from { opacity: 0; filter: blur(10px); }
+  to { opacity: 1; filter: blur(0); }
+}
+
+/* CANVAS */
+#stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: #000;
+}
+
+/* LOGIN */
 .logo {
   font-size: 3em;
   color: #ff0000;
@@ -66,12 +87,11 @@ button:hover {
   margin-top: 10px;
 }
 
-/* ===== HOME PAGE ===== */
+/* HOME */
 .home-container {
   text-align: center;
   width: 100%;
   height: 100vh;
-  background: radial-gradient(circle at center, #0b0b0b, #000);
   overflow: hidden;
   position: relative;
 }
@@ -90,7 +110,7 @@ button:hover {
   color: #333;
 }
 
-/* ===== CURSOR FANTASMA ===== */
+/* CURSOR FANTASMA */
 .cursor {
   width: 20px;
   height: 20px;
@@ -102,7 +122,7 @@ button:hover {
   transition: transform 0.1s ease;
 }
 
-/* ===== BOTÃO DE LOGOUT ===== */
+/* LOGOUT */
 .logout-container {
   position: fixed;
   top: 20px;
@@ -129,6 +149,7 @@ button:hover {
   transform: rotate(-2deg);
 }
 
+/* ANIMAÇÕES */
 @keyframes shake {
   0% { transform: rotate(-1deg); }
   50% { transform: rotate(2deg); }
