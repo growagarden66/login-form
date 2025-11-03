@@ -1,34 +1,54 @@
-const uname = document.querySelector('#uname');
-const pass = document.querySelector('#pass');
-const btn = document.querySelector('#login-btn');
-const msg = document.querySelector('#msg');
+// LOGIN
+const loginBtn = document.getElementById('loginBtn');
 
-btn.disabled = true;
+if (loginBtn) {
+  loginBtn.addEventListener('click', () => {
+    const user = document.getElementById('username').value.trim();
+    const pass = document.getElementById('password').value.trim();
 
-function shiftButton() {
-  const positions = ['shift-left', 'shift-top', 'shift-right', 'shift-bottom'];
-  const currentPosition = positions.find(dir => btn.classList.contains(dir));
-  const nextPosition = positions[(positions.indexOf(currentPosition) + 1) % positions.length];
+    if (!user || !pass) {
+      alert('Preencha todos os campos!');
+      return;
+    }
 
-  btn.classList.remove(currentPosition);
-  btn.classList.add(nextPosition);
+    const savedUser = localStorage.getItem('growaUser');
+    const savedPass = localStorage.getItem('growaPass');
 
-  msg.style.visibility = "visible";
+    if (!savedUser && !savedPass) {
+      // cria conta nova
+      localStorage.setItem('growaUser', user);
+      localStorage.setItem('growaPass', pass);
+      window.location.href = 'home.html';
+    } else if (user === savedUser && pass === savedPass) {
+      // login correto
+      window.location.href = 'home.html';
+    } else {
+      alert('Usuário ou senha incorretos!');
+    }
+  });
 }
 
-uname.addEventListener('input', checkInputs);
-pass.addEventListener('input', checkInputs);
-
-function checkInputs() {
-  if (uname.value && pass.value) {
-    btn.disabled = false;
-    btn.classList.remove('shift-left', 'shift-right', 'shift-top', 'shift-bottom');
-    msg.style.visibility = "hidden";
-  } else {
-    btn.disabled = true;
-  }
+// LOGOUT
+const logoutBtn = document.getElementById('logoutButton');
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', () => {
+    logoutBtn.style.animation = 'shake 0.4s ease';
+    setTimeout(() => {
+      logoutBtn.style.animation = 'fadeOut 0.5s forwards';
+    }, 300);
+    setTimeout(() => {
+      localStorage.clear();
+      window.location.href = 'index.html';
+    }, 800);
+  });
 }
 
-btn.addEventListener('mouseover', () => {
-  if (btn.disabled) shiftButton();
+// CURSOR FANTASMA
+const cursor = document.createElement('div');
+cursor.classList.add('cursor');
+document.body.appendChild(cursor);
+
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = `${e.clientX}px`;
+  cursor.style.top = `${e.clientY}px`;
 });
