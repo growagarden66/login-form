@@ -7,53 +7,31 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="login-container" class="fade-in">
-    <h1>Growa ❄️</h1>
-    <div class="login-box">
-      <input type="text" id="username" placeholder="Usuário">
-      <input type="password" id="password" placeholder="Senha">
-      <button id="loginBtn">Entrar</button>
-      <button id="registerBtn">Criar Conta</button>
-      <button id="returnBtn">Entre de volta na sua conta</button>
-    </div>
-  </div>
+  <canvas id="stars"></canvas>
 
-  <div id="main-container" class="hidden fade-in">
-    <header>
-      <h1>Growa ❄️</h1>
-      <div class="menu">
-        <button id="settingsBtn">⋮</button>
+  <header>
+    <h1 class="logo">Growa ❄️</h1>
+    <div class="menu">
+      <button id="menuButton">⋮</button>
+      <div id="menuOptions" class="menu-options hidden">
+        <button id="toggleTheme">Modo Escuro 🌙</button>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <div class="search-area">
-      <input type="text" id="searchInput" placeholder="Pesquise na web...">
-      <button id="searchBtn">🔍</button>
+  <main>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Pesquisar na Growa...">
+      <button id="searchButton">🔍</button>
     </div>
 
-    <div id="news-section">
-      <h2>Notícias de Hoje</h2>
-      <div id="news-container" class="card-grid"></div>
-    </div>
+    <section id="results" class="results"></section>
+  </main>
 
-    <div id="results-section" class="hidden">
-      <h2>Resultados</h2>
-      <div id="results"></div>
-    </div>
-
-    <footer>
-      <p>❄️ Growa — Explore o mundo de forma inteligente. | <a href="#">Aviso Legal</a></p>
-    </footer>
-  </div>
-
-  <!-- Configurações -->
-  <div id="settings-menu" class="hidden">
-    <h3>Configurações</h3>
-    <button id="themeToggle">Alternar Tema 🌙</button>
-    <button id="logoutBtn">Sair da Conta 👻</button>
-  </div>
-
-  <div id="ghost"></div>
+  <footer>
+    <p>⚠️ Este site mostra resultados de notícias e conteúdos automaticamente obtidos da internet via GNews API.  
+    Os resultados mudam a cada 24 horas e não são armazenados permanentemente.</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
