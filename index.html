@@ -1,23 +1,60 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Growa - Login</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Growa ❄️</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="fade-in">
-  <canvas id="stars"></canvas>
-
-  <div class="login-container">
-    <h1 class="logo">Growa</h1>
-    <input type="text" id="username" placeholder="Usuário" />
-    <input type="password" id="password" placeholder="Senha" />
-    <button id="loginBtn">Entrar</button>
-    <p class="info">Primeiro login: use qualquer nome e senha 🔐</p>
+<body>
+  <div id="login-container" class="fade-in">
+    <h1>Growa ❄️</h1>
+    <div class="login-box">
+      <input type="text" id="username" placeholder="Usuário">
+      <input type="password" id="password" placeholder="Senha">
+      <button id="loginBtn">Entrar</button>
+      <button id="registerBtn">Criar Conta</button>
+      <button id="returnBtn">Entre de volta na sua conta</button>
+    </div>
   </div>
 
-  <script src="stars.js"></script>
+  <div id="main-container" class="hidden fade-in">
+    <header>
+      <h1>Growa ❄️</h1>
+      <div class="menu">
+        <button id="settingsBtn">⋮</button>
+      </div>
+    </header>
+
+    <div class="search-area">
+      <input type="text" id="searchInput" placeholder="Pesquise na web...">
+      <button id="searchBtn">🔍</button>
+    </div>
+
+    <div id="news-section">
+      <h2>Notícias de Hoje</h2>
+      <div id="news-container" class="card-grid"></div>
+    </div>
+
+    <div id="results-section" class="hidden">
+      <h2>Resultados</h2>
+      <div id="results"></div>
+    </div>
+
+    <footer>
+      <p>❄️ Growa — Explore o mundo de forma inteligente. | <a href="#">Aviso Legal</a></p>
+    </footer>
+  </div>
+
+  <!-- Configurações -->
+  <div id="settings-menu" class="hidden">
+    <h3>Configurações</h3>
+    <button id="themeToggle">Alternar Tema 🌙</button>
+    <button id="logoutBtn">Sair da Conta 👻</button>
+  </div>
+
+  <div id="ghost"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
