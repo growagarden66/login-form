@@ -2,161 +2,162 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  color: white;
+  background: radial-gradient(circle at top, #0a0a0a, #000);
+  color: #fff;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.fade-in {
+  animation: fade 1.2s ease-in-out;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Login */
+#login-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  overflow: hidden;
-  background: #000;
 }
 
-/* FADE-IN (efeito de entrada suave) */
-.fade-in {
-  animation: fadeIn 1.5s ease-in-out forwards;
-  opacity: 0;
-}
-@keyframes fadeIn {
-  from { opacity: 0; filter: blur(10px); }
-  to { opacity: 1; filter: blur(0); }
+.login-box {
+  background: rgba(20, 20, 20, 0.8);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px #222;
+  text-align: center;
 }
 
-/* CANVAS */
-#stars {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: #000;
-}
-
-/* LOGIN */
-.logo {
-  font-size: 3em;
-  color: #ff0000;
-  margin-bottom: 20px;
-  text-shadow: 0 0 20px red;
-}
-
-.login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-}
-
-input {
-  margin: 10px 0;
-  padding: 10px 15px;
+.login-box input {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 80%;
+  border-radius: 8px;
   border: none;
-  border-radius: 10px;
-  outline: none;
-  width: 220px;
 }
 
-button {
-  background: #ff0000;
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 10px;
+.login-box button {
   margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #111;
+  color: white;
   cursor: pointer;
   transition: 0.3s;
-  font-weight: bold;
 }
 
-button:hover {
-  background: #ff4f4f;
+.login-box button:hover {
+  background: #333;
+}
+
+/* Main */
+.hidden { display: none; }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background: rgba(15, 15, 15, 0.9);
+}
+
+.search-area {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.search-area input {
+  padding: 12px;
+  width: 70%;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.search-area button {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #1b1b1b;
+  color: white;
+  cursor: pointer;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.card {
+  background: rgba(25, 25, 25, 0.85);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 10px #111;
+  transition: 0.3s;
+}
+
+.card:hover {
   transform: scale(1.05);
 }
 
-.info {
-  font-size: 0.8em;
-  opacity: 0.7;
-  margin-top: 10px;
-}
-
-/* HOME */
-.home-container {
-  text-align: center;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-}
-
-.search-box {
-  margin-top: 200px;
-}
-
-.search-box input {
-  width: 280px;
-  padding: 10px 15px;
-  border: none;
+/* Configurações */
+#settings-menu {
+  position: fixed;
+  right: 10px;
+  top: 60px;
+  background: rgba(15,15,15,0.9);
+  padding: 15px;
   border-radius: 10px;
-  outline: none;
-  font-size: 16px;
-  color: #333;
+  box-shadow: 0 0 10px #222;
 }
 
-/* CURSOR FANTASMA */
-.cursor {
-  width: 20px;
-  height: 20px;
-  border: 2px solid red;
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease;
-}
-
-/* LOGOUT */
-.logout-container {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-}
-
-.logout-btn {
-  background-color: #1f2335;
-  color: #fff;
+#settings-menu button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
   border: none;
-  border-radius: 8px;
-  padding: 12px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  background: #111;
+  color: white;
+  border-radius: 10px;
 }
 
-.logout-btn:hover {
-  background-color: #ff4f4f;
-  transform: rotate(-2deg);
+/* Fantasma */
+#ghost {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: url('https://i.ibb.co/52LM4qD/ghost-icon.png') center/cover no-repeat;
+  animation: float 6s ease-in-out infinite;
 }
 
-/* ANIMAÇÕES */
-@keyframes shake {
-  0% { transform: rotate(-1deg); }
-  50% { transform: rotate(2deg); }
-  100% { transform: rotate(-1deg); }
+@keyframes float {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -30px); }
 }
 
-@keyframes fadeOut {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
+/* Rodapé */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #111;
+  text-align: center;
+  padding: 10px;
+  border-top: 2px solid #444;
 }
