@@ -1,87 +1,76 @@
-// --- LOGIN E CONTA ---
-const loginContainer = document.getElementById('login-container');
-const mainContainer = document.getElementById('main-container');
-const loginBtn = document.getElementById('loginBtn');
-const registerBtn = document.getElementById('registerBtn');
-const returnBtn = document.getElementById('returnBtn');
-const logoutBtn = document.getElementById('logoutBtn');
-const settingsBtn = document.getElementById('settingsBtn');
-const settingsMenu = document.getElementById('settings-menu');
+// Growa Search Engine ❄️
+// Desenvolvido com integração GNews API
 
-let users = JSON.parse(localStorage.getItem('users')) || {};
+const apiKey = "473185ce15637acf18323bb9c226e5ba";
 
-loginBtn.onclick = () => {
-  const user = document.getElementById('username').value;
-  const pass = document.getElementById('password').value;
-  if (users[user] && users[user] === pass) {
-    localStorage.setItem('currentUser', user);
-    loginContainer.classList.add('hidden');
-    mainContainer.classList.remove('hidden');
-  } else alert("Usuário ou senha incorretos!");
-};
+const loginBtn = document.getElementById("loginBtn");
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+const loginContainer = document.getElementById("loginContainer");
+const home = document.getElementById("home");
+const logoutBtn = document.getElementById("logoutBtn");
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
+const newsContainer = document.getElementById("newsContainer");
 
-registerBtn.onclick = () => {
-  const user = document.getElementById('username').value;
-  const pass = document.getElementById('password').value;
-  users[user] = pass;
-  localStorage.setItem('users', JSON.stringify(users));
-  alert("Conta criada com sucesso!");
-};
+loginBtn.addEventListener("click", () => {
+  const user = usernameInput.value;
+  const pass = passwordInput.value;
+  if (!user || !pass) {
+    alert("Preencha usuário e senha!");
+    return;
+  }
 
-returnBtn.onclick = () => {
-  alert("Use seu nome e senha criados para retornar!");
-};
+  localStorage.setItem("userGrowa", JSON.stringify({ user, pass }));
+  loginContainer.style.display = "none";
+  home.style.display = "block";
+  loadNews("tecnologia");
+});
 
-logoutBtn.onclick = () => {
-  localStorage.removeItem('currentUser');
-  mainContainer.classList.add('hidden');
-  loginContainer.classList.remove('hidden');
-};
+logoutBtn.addEventListener("click", () => {
+  localStorage.removeItem("userGrowa");
+  home.style.display = "none";
+  loginContainer.style.display = "flex";
+});
 
-// --- TEMA ---
-const themeToggle = document.getElementById('themeToggle');
-themeToggle.onclick = () => {
-  document.body.classList.toggle('light-mode');
-};
+searchBtn.addEventListener("click", () => {
+  const query = searchInput.value.trim();
+  if (query) loadNews(query);
+});
 
-settingsBtn.onclick = () => {
-  settingsMenu.classList.toggle('hidden');
-};
+async function loadNews(query) {
+  try {
+    const res = await fetch(`https://gnews.io/api/v4/search?q=${query}&lang=pt&country=br&max=10&apikey=${apiKey}`);
+    const data = await res.json();
 
-// --- PESQUISA E NOTÍCIAS ---
-const apiKey = "473185ce15637acf18323bb9c226e5ba"; // <-- cole sua chave da GNews aqui
-const searchInput = document.getElementById('searchInput');
-const searchBtn = document.getElementById('searchBtn');
-const resultsSection = document.getElementById('results-section');
-const resultsDiv = document.getElementById('results');
+    newsContainer.innerHTML = "";
 
-async function buscarNoticias() {
-  const res = await fetch(`https://gnews.io/api/v4/top-headlines?lang=pt&token=${apiKey}`);
-  const data = await res.json();
-  mostrarNoticias(data.articles);
+    if (data.articles && data.articles.length > 0) {
+      data.articles.forEach(article => {
+        const card = document.createElement("div");
+        card.className = "news-card";
+        card.innerHTML = `
+          <h3>${article.title}</h3>
+          <p>${article.description || "Sem descrição disponível."}</p>
+          <a href="${article.url}" target="_blank">Ler mais 🔗</a>
+        `;
+        newsContainer.appendChild(card);
+      });
+    } else {
+      newsContainer.innerHTML = "<p>Nenhuma notícia encontrada 😢</p>";
+    }
+  } catch (err) {
+    console.error(err);
+    newsContainer.innerHTML = "<p>Erro ao carregar notícias ⚠️</p>";
+  }
 }
 
-function mostrarNoticias(news) {
-  const container = document.getElementById('news-container');
-  container.innerHTML = news.map(n => `
-    <div class="card">
-      <h3>${n.title}</h3>
-      <p>${n.description || ""}</p>
-      <a href="${n.url}" target="_blank">Ler mais</a>
-    </div>`).join('');
-}
-
-searchBtn.onclick = async () => {
-  const query = searchInput.value;
-  const res = await fetch(`https://gnews.io/api/v4/search?q=${query}&lang=pt&token=${apiKey}`);
-  const data = await res.json();
-  resultsSection.classList.remove('hidden');
-  resultsDiv.innerHTML = data.articles.map(r => `
-    <div class="card">
-      <h3>${r.title}</h3>
-      <p>${r.description || ""}</p>
-      <a href="${r.url}" target="_blank">Abrir</a>
-    </div>`).join('');
+// Verifica login automático
+window.onload = () => {
+  const user = JSON.parse(localStorage.getItem("userGrowa"));
+  if (user) {
+    loginContainer.style.display = "none";
+    home.style.display = "block";
+    loadNews("tecnologia");
+  }
 };
-
-buscarNoticias();
