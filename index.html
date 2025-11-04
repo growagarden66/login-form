@@ -1,38 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Growa ❄️</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <canvas id="stars"></canvas>
+  <div class="login-container" id="loginContainer">
+    <h1 class="title">Growa ❄️</h1>
+    <input type="text" id="username" placeholder="Usuário" />
+    <input type="password" id="password" placeholder="Senha" />
+    <button id="loginBtn">Entrar</button>
+    <p class="info">Primeiro login: use qualquer nome e senha 🔒</p>
+  </div>
 
-  <header>
-    <h1 class="logo">Growa ❄️</h1>
-    <div class="menu">
-      <button id="menuButton">⋮</button>
-      <div id="menuOptions" class="menu-options hidden">
-        <button id="toggleTheme">Modo Escuro 🌙</button>
-      </div>
-    </div>
-  </header>
-
-  <main>
+  <div class="home" id="home" style="display:none;">
+    <header>
+      <h1>Growa ❄️</h1>
+      <button id="logoutBtn">Sair</button>
+    </header>
     <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Pesquisar na Growa...">
-      <button id="searchButton">🔍</button>
+      <input type="text" id="searchInput" placeholder="Pesquise algo..." />
+      <button id="searchBtn">🔍</button>
     </div>
+    <div id="newsContainer" class="news-container"></div>
+  </div>
 
-    <section id="results" class="results"></section>
-  </main>
-
-  <footer>
-    <p>⚠️ Este site mostra resultados de notícias e conteúdos automaticamente obtidos da internet via GNews API.  
-    Os resultados mudam a cada 24 horas e não são armazenados permanentemente.</p>
-  </footer>
-
+  <canvas id="stars"></canvas>
   <script src="script.js"></script>
 </body>
 </html>
