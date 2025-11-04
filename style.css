@@ -2,162 +2,162 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
-  background: radial-gradient(circle at top, #0a0a0a, #000);
+  background: #000;
   color: #fff;
-  height: 100vh;
   overflow: hidden;
+  transition: background 0.5s, color 0.5s;
 }
-
-.fade-in {
-  animation: fade 1.2s ease-in-out;
-}
-
-@keyframes fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Login */
-#login-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.login-box {
-  background: rgba(20, 20, 20, 0.8);
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 0 15px #222;
-  text-align: center;
-}
-
-.login-box input {
-  display: block;
-  margin: 10px auto;
-  padding: 10px;
-  width: 80%;
-  border-radius: 8px;
-  border: none;
-}
-
-.login-box button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  background: #111;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.login-box button:hover {
-  background: #333;
-}
-
-/* Main */
-.hidden { display: none; }
 
 header {
   display: flex;
   justify-content: space-between;
-  padding: 15px 20px;
-  background: rgba(15, 15, 15, 0.9);
+  align-items: center;
+  padding: 15px 25px;
+  background: rgba(0,0,0,0.6);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
 }
 
-.search-area {
-  text-align: center;
-  margin: 40px 0;
+.logo {
+  font-size: 2em;
+  color: #ff0000;
+  text-shadow: 0 0 15px red;
 }
 
-.search-area input {
-  padding: 12px;
-  width: 70%;
+.menu {
+  position: relative;
+}
+
+#menuButton {
+  background: none;
   border: none;
-  border-radius: 10px;
-  font-size: 16px;
-}
-
-.search-area button {
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  background: #1b1b1b;
   color: white;
+  font-size: 1.8em;
   cursor: pointer;
 }
 
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
+.menu-options {
+  position: absolute;
+  right: 0;
+  background: rgba(30, 30, 30, 0.9);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-options.hidden {
+  display: none;
+}
+
+.menu-options button {
+  background: none;
+  border: none;
+  color: white;
+  padding: 8px;
+  cursor: pointer;
+  text-align: left;
+}
+
+main {
+  margin-top: 100px;
+  text-align: center;
   padding: 20px;
 }
 
+.search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-box input {
+  width: 70%;
+  padding: 10px;
+  border-radius: 25px;
+  border: none;
+  font-size: 1em;
+  outline: none;
+}
+
+.search-box button {
+  background: red;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.results {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
 .card {
-  background: rgba(25, 25, 25, 0.85);
-  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 15px;
   padding: 15px;
-  box-shadow: 0 0 10px #111;
-  transition: 0.3s;
+  text-align: left;
+  transition: transform 0.3s, background 0.3s;
 }
 
 .card:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
+  background: rgba(255,0,0,0.1);
 }
 
-/* Configurações */
-#settings-menu {
-  position: fixed;
-  right: 10px;
-  top: 60px;
-  background: rgba(15,15,15,0.9);
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #222;
+.card h3 {
+  color: #ff4b4b;
+  margin-bottom: 10px;
 }
 
-#settings-menu button {
-  display: block;
-  margin: 10px auto;
-  padding: 10px;
-  border: none;
-  background: #111;
-  color: white;
-  border-radius: 10px;
+.card a {
+  color: #00bfff;
+  text-decoration: none;
 }
 
-/* Fantasma */
-#ghost {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: url('https://i.ibb.co/52LM4qD/ghost-icon.png') center/cover no-repeat;
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, -30px); }
-}
-
-/* Rodapé */
 footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: #111;
+  background: rgba(255,0,0,0.1);
   text-align: center;
-  padding: 10px;
-  border-top: 2px solid #444;
+  font-size: 0.8em;
+  padding: 8px;
+  color: #ff4b4b;
+  border-top: 1px solid rgba(255,0,0,0.4);
+}
+
+canvas#stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* 🌗 Tema Claro */
+body.light {
+  background: #fff;
+  color: #000;
+}
+
+body.light .card {
+  background: rgba(0,0,0,0.05);
+  color: #000;
+}
+
+body.light .logo {
+  color: #333;
+  text-shadow: none;
 }
